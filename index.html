@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#20385f">
+<meta name="description" content="Planeje seus objetivos pessoais, financeiros e profissionais com o Meu Próximo Passo.">
+<title>Meu Próximo Passo | Planeje seu futuro</title>
+
+<style>
+:root {
+  --azul: #20385f;
+  --azul-claro: #edf2fa;
+  --amarelo: #f8e9b9;
+  --lilas: #eae5f6;
+  --roxo: #8177a9;
+  --fundo: #faf9f5;
+  --branco: #ffffff;
+  --texto: #33435d;
+  --cinza: #77849a;
+  --borda: #e9e6df;
+  --verde: #e8f4eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--roxo);
+  outline-offset: 3px;
+}
+
+header {
+  background: var(--branco);
+  border-bottom: 1px solid var(--borda);
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  color: var(--azul);
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--roxo);
+}
+
+.header-tag {
+  font-size: 12px;
+  color: var(--cinza);
+}
+
+main {
+  width: min(1050px, 92%);
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 65px 0 35px;
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--amarelo);
+  color: #695027;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  color: var(--azul);
+  line-height: 1.2;
+}
+
+h1 {
+  max-width: 700px;
+  font-family: Georgia, serif;
+  font-size: clamp(36px, 6vw, 58px);
+  margin: 20px 0;
+}
+
+.hero p {
+  max-width: 650px;
+  color: var(--cinza);
+  font-size: 17px;
+}
+
+.botao {
+  display: inline-block;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .15s, opacity .15s;
+}
+
+.botao:hover {
+  opacity: .9;
+  transform: translateY(-1px);
+}
+
+.botao-principal {
+  background: var(--azul);
+  color: white;
+}
+
+.botao-secundario {
+  background: var(--azul-claro);
+  color: var(--azul);
+}
+
+.botao-excluir {
+  background: #fff0ee;
+  color: #a43d32;
+}
+
+.secao {
+  margin: 35px 0;
+}
+
+.secao-titulo {
+  margin-bottom: 20px;
+}
+
+.secao-titulo p {
+  color: var(--cinza);
+  margin-top: 5px;
+}
+
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.categoria {
+  padding: 23px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+}
+
+.icone {
+  font-size: 30px;
+}
+
+.categoria h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.categoria p {
+  color: var(--cinza);
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.painel {
+  padding: clamp(20px, 4vw, 38px);
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 24px;
+  margin: 35px 0;
+}
+
+.painel h2 {
+  margin-top: 0;
+  font-family: Georgia, serif;
+  font-size: 30px;
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo-completo {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: bold;
+  color: var(--azul);
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #d9dce3;
+  border-radius: 11px;
+  background: white;
+  color: var(--texto);
+}
+
+input::placeholder {
+  color: #9ba3b1;
+}
+
+.ajuda {
+  color: var(--cinza);
+  font-size: 12px;
+}
+
+.acoes-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+
+.aviso {
+  display: none;
+  padding: 13px 16px;
+  border-radius: 12px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.aviso.erro {
+  display: block;
+  color: #8c3029;
+  background: #fff0ee;
+}
+
+.aviso.sucesso {
+  display: block;
+  color: #376548;
+  background: var(--verde);
+}
+
+.lista-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contador {
+  color: var(--cinza);
+  font-size: 14px;
+}
+
+.lista-objetivos {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.objetivo {
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 23px;
+  min-width: 0;
+}
+
+.objetivo-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.objetivo-categoria {
+  color: var(--roxo);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+.objetivo h3 {
+  margin: 7px 0 0;
+  font-size: 22px;
+  overflow-wrap: anywhere;
+}
+
+.botoes-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.botoes-card button {
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.editar {
+  color: #765522;
+  background: #fbf1d9;
+}
+
+.excluir {
+  color: #a43d32;
+  background: #fff0ee;
+}
+
+.progresso-texto {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 23px 0 10px;
+  font-size: 14px;
+}
+
+.progresso-texto strong {
+  color: var(--azul);
+}
+
+.barra {
+  height: 10px;
+  border-radius: 20px;
+  background: #eeedf2;
+  overflow: hidden;
+}
+
+.barra-preenchida {
+  height: 100%;
+  background: var(--roxo);
+  border-radius: 20px;
+  transition: width .3s;
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  border-top: 1px solid var(--borda);
+  padding-top: 20px;
+  margin-top: 23px;
+}
+
+.dado span {
+  display: block;
+  color: var(--cinza);
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.dado strong {
+  overflow-wrap: anywhere;
+}
+
+.plano-b {
+  background: #fcf7e8;
+  color: #715f32;
+  padding: 16px;
+  border-radius: 15px;
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+.plano-b strong {
+  color: #55451f;
+}
+
+.vazio {
+  text-align: center;
+  padding: 30px 15px;
+  color: var(--cinza);
+  border: 1px dashed #d9d4e5;
+  border-radius: 16px;
+}
+
+.vazio .icone {
+  font-size: 35px;
+}
+
+.frase-final {
+  margin: 40px 0;
+  padding: 25px;
+  background: var(--lilas);
+  border-radius: 22px;
+  color: #514b70;
+}
+
+.frase-final strong {
+  color: var(--azul);
+}
+
+footer {
+  text-align: center;
+  color: var(--cinza);
+  padding: 30px 15px;
+  font-size: 12px;
+}
+
+footer a {
+  color: var(--azul);
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 15px 4%;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+
+  .header-tag {
+    max-width: 110px;
+    text-align: right;
+  }
+
+  main {
+    width: 92%;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .categorias {
+    grid-template-columns: 1fr;
+  }
+
+  .categoria {
+    padding: 19px;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .campo-completo {
+    grid-column: auto;
+  }
+
+  .painel h2 {
+    font-size: 25px;
+  }
+
+  .objetivo {
+    padding: 17px;
+  }
+
+  .objetivo h3 {
+    font-size: 20px;
+  }
+
+  .dados {
+    gap: 17px 12px;
+  }
+
+  .botoes-card {
+    width: 100%;
+  }
+
+  .botoes-card button {
+    flex: 1;
+  }
+
+  .acoes-formulario .botao {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="logo" href="#" aria-label="Meu Próximo Passo - início">
+    Meu Próximo <span>Passo.</span>
+  </a>
+  <span class="header-tag">Seu futuro começa com um plano</span>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="etiqueta">✨ Seu futuro, no seu ritmo</span>
+    <h1>Seus sonhos merecem um plano.</h1>
+    <p>
+      Transforme seus objetivos pessoais, financeiros e profissionais
+      em passos concretos. Organize suas metas e descubra caminhos
+      possíveis para realizar cada uma delas.
+    </p>
+    <a class="botao botao-principal" href="#planejamento">
+      Criar meu planejamento →
+    </a>
+  </section>
+
+  <section class="secao" aria-labelledby="categorias-titulo">
+    <div class="secao-titulo">
+      <h2 id="categorias-titulo">O que você quer conquistar?</h2>
+      <p>Escolha um objetivo e comece a planejar.</p>
+    </div>
+
+    <div class="categorias">
+      <article class="categoria">
+        <div class="icone" aria-hidden="true">🎓</div>
+        <h3>Meu futuro profissional</h3>
+        <p>Organize seus planos de estudo, cursos e carreira.</p>
+      </article>
+
+      <article class="categoria">
+        <div class="icone" aria-hidden="true">💰</div>
+        <h3>Minha vida financeira</h3>
+        <p>Planeje suas economias e acompanhe o caminho até sua meta.</p>
+      </article>
+
+      <article class="categoria">
+        <div class="icone" aria-hidden="true">🏡</div>
+        <h3>Meus objetivos pessoais</h3>
+        <p>Transforme seus planos pessoais em metas organizadas.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="painel" id="planejamento">
+    <h2 id="titulo-formulario">Vamos planejar seu próximo passo?</h2>
+    <p>Preencha os campos abaixo para montar seu planejamento.</p>
+
+    <form id="formulario">
+      <div class="formulario">
+        <div class="campo campo-completo">
+          <label for="nome">Qual é o seu objetivo?</label>
+          <input id="nome" name="nome" maxlength="100"
+                 placeholder="Ex.: Comprar uma moto" required>
+        </div>
+
+        <div class="campo">
+          <label for="categoria">Categoria</label>
+          <select id="categoria" name="categoria" required>
+            <option value="pessoal">Meus objetivos pessoais</option>
+            <option value="financeiro">Minha vida financeira</option>
+            <option value="profissional">Meu futuro profissional</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="custo">Custo total (R$)</label>
+          <input id="custo" name="custo" type="number"
+                 min="0.01" max="1000000000" step="0.01"
+                 placeholder="Ex.: 12000" required>
+        </div>
+
+        <div class="campo">
+          <label for="guardado">Quanto já tem guardado (R$)</label>
+          <input id="guardado" name="guardado" type="number"
+                 min="0" max="1000000000" step="0.01"
+                 value="0" required>
+        </div>
+
+        <div class="campo">
+          <label for="mensal">Quanto pode guardar por mês (R$)</label>
+          <input id="mensal" name="mensal" type="number"
+                 min="0" max="1000000000" step="0.01"
+                 placeholder="Ex.: 500" required>
+          <span class="ajuda">Informe quanto consegue economizar mensalmente.</span>
+        </div>
+
+        <div class="campo">
+          <label for="prazo">Em quantos meses deseja alcançar a meta?</label>
+          <input id="prazo" name="prazo" type="number"
+                 min="1" max="1200" step="1"
+                 placeholder="Ex.: 12" required>
+        </div>
+      </div>
+
+      <div class="acoes-formulario">
+        <button class="botao botao-principal" type="submit"
+                id="botao-salvar">Salvar meu objetivo</button>
+        <button class="botao botao-secundario" type="button"
+                id="botao-cancelar" hidden>Cancelar edição</button>
+      </div>
+
+      <div id="mensagem-formulario" class="aviso"
+           role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="painel" id="meus-objetivos">
+    <div class="lista-cabecalho">
+      <h2>Seus objetivos</h2>
+      <span class="contador" id="contador">0 objetivos salvos</span>
+    </div>
+
+    <div class="lista-objetivos" id="lista-objetivos" aria-live="polite">
+      <div class="vazio">
+        <div class="icone" aria-hidden="true">🌱</div>
+        <p>Seu planejamento começa com um primeiro passo.</p>
+        <p>Cadastre um objetivo para acompanhar seu progresso.</p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="frase-final">
+    <strong>Não existe um ritmo certo.</strong>
+    O melhor plano é aquele que respeita sua realidade de hoje
+    e pode ser ajustado sempre que necessário.
+  </aside>
+</main>
+
+<footer>
+  <p><strong>Meu Próximo Passo</strong></p>
+  <p>Projeto acadêmico de planejamento pessoal, financeiro e profissional.</p>
+  <p>Seus objetivos ficam salvos localmente neste navegador.</p>
+</footer>
+
+<script>
+"use strict";
+
+const CHAVE = "meuProximoPasso_objetivos_v1";
+
+const formulario = document.getElementById("formulario");
+const lista = document.getElementById("lista-objetivos");
+const contador = document.getElementById("contador");
+const mensagem = document.getElementById("mensagem-formulario");
+const botaoSalvar = document.getElementById("botao-salvar");
+const botaoCancelar = document.getElementById("botao-cancelar");
+const tituloFormulario = document.getElementById("titulo-formulario");
+
+let objetivos = carregarObjetivos();
+let idEmEdicao = null;
+
+const categorias = {
+  pessoal: "Meus objetivos pessoais",
+  financeiro: "Minha vida financeira",
+  profissional: "Meu futuro profissional"
+};
+
+function carregarObjetivos() {
+  try {
+    const dados = localStorage.getItem(CHAVE);
+    const resultado = dados ? JSON.parse(dados) : [];
+    return Array.isArray(resultado) ? resultado : [];
+  } catch (erro) {
+    return [];
+  }
+}
+
+function salvarNoNavegador() {
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify(objetivos));
+    return true;
+  } catch (erro) {
+    return false;
+  }
+}
+
+function moeda(valor) {
+  return Number(valor).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+function escapar(texto) {
+  return String(texto).replace(/[&<>"']/g, function(caractere) {
+    const mapa = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+    return mapa[caractere];
+  });
+}
+
+function calcular(objetivo) {
+  const restante = Math.max(0, objetivo.custo - objetivo.guardado);
+  const progresso = objetivo.custo > 0
+    ? Math.min(100, (objetivo.guardado / objetivo.custo) * 100)
+    : 0;
+
+  const meses = restante === 0
+    ? 0
+    : objetivo.mensal > 0
+      ? Math.ceil(restante / objetivo.mensal)
+      : null;
+
+  const necessario = objetivo.prazo > 0
+    ? restante / objetivo.prazo
+    : 0;
+
+  return {
+    restante,
+    progresso,
+    meses,
+    necessario,
+    viavel: restante === 0 ||
+      (objetivo.mensal > 0 && meses <= objetivo.prazo)
+  };
+}
+
+function sugestao(objetivo, resultado) {
+  if (resultado.restante === 0) {
+    return "<strong>Parabéns!</strong> Você já atingiu o valor necessário para esta meta. Revise os custos antes de concluir sua compra ou plano.";
+  }
+
+  if (objetivo.mensal === 0) {
+    return "<strong>Vamos montar um Plano B.</strong> No momento, você não informou uma economia mensal. Avalie quanto poderia guardar, mesmo que seja um valor pequeno, e reveja o prazo.";
+  }
+
+  if (resultado.viavel) {
+    return "<strong>Seu plano cabe no prazo informado!</strong> Mantendo a economia mensal registrada, a estimativa é alcançar a meta em " +
+      resultado.meses + " " + (resultado.meses === 1 ? "mês" : "meses") +
+      ". Reavalie os valores se sua situação mudar.";
+  }
+
+  const mensalArredondado = Math.ceil(resultado.necessario * 100) / 100;
+
+  const prazoAlternativo = Math.max(
+    objetivo.prazo + 1,
+    Math.ceil(resultado.restante / objetivo.mensal)
+  );
+
+  const prazoDobrado = objetivo.prazo * 2;
+  const mensalPrazoDobrado = Math.ceil(
+    (resultado.restante / prazoDobrado) * 100
+  ) / 100;
+
+  return "<strong>Vamos ajustar?</strong> Para alcançar a meta em " +
+    objetivo.prazo + " " + (objetivo.prazo === 1 ? "mês" : "meses") +
+    ", você precisaria guardar aproximadamente <strong>" +
+    moeda(mensalArredondado) + " por mês</strong>. " +
+    "Com o ritmo atual, a estimativa é de <strong>" +
+    resultado.meses + " meses</strong>. " +
+    "Alternativa: se puder ampliar o prazo para " +
+    prazoAlternativo + " meses, poderá manter a economia mensal atual. " +
+    "Outra possibilidade é considerar um prazo de " + prazoDobrado +
+    " meses, que exigiria cerca de " + moeda(mensalPrazoDobrado) +
+    " mensais. As sugestões não consideram juros, inflação ou mudanças no preço.";
+}
+
+function renderizar() {
+  contador.textContent = objetivos.length +
+    (objetivos.length === 1 ? " objetivo salvo" : " objetivos salvos");
+
+  if (objetivos.length === 0) {
+    lista.innerHTML = `
+      <div class="vazio">
+        <div class="icone" aria-hidden="true">🌱</div>
+        <p>Seu planejamento começa com um primeiro passo.</p>
+        <p>Cadastre um objetivo para acompanhar seu progresso.</p>
+      </div>`;
+    return;
+  }
+
+  lista.innerHTML = objetivos.map(function(objetivo) {
+    const resultado = calcular(objetivo);
+
+    return `
+      <article class="objetivo">
+        <div class="objetivo-topo">
+          <div>
+            <div class="objetivo-categoria">
+              ${escapar(categorias[objetivo.categoria] || categorias.pessoal)}
+            </div>
+            <h3>${escapar(objetivo.nome)}</h3>
+          </div>
+
+          <div class="botoes-card">
+            <button type="button" class="editar"
+                    data-acao="editar" data-id="${escapar(objetivo.id)}"
+                    aria-label="Editar ${escapar(objetivo.nome)}">
+              ✏️ Editar
+            </button>
+            <button type="button" class="excluir"
+                    data-acao="excluir" data-id="${escapar(objetivo.id)}"
+                    aria-label="Excluir ${escapar(objetivo.nome)}">
+              🗑 Excluir
+            </button>
+          </div>
+        </div>
+
+        <div class="progresso-texto">
+          <span>Já guardado <strong>${moeda(objetivo.guardado)}</strong></span>
+          <span><strong>${resultado.progresso.toFixed(1).replace(".", ",")}%</strong> do objetivo</span>
+        </div>
+
+        <div class="barra"
+             role="progressbar"
+             aria-label="Progresso de ${escapar(objetivo.nome)}"
+             aria-valuemin="0" aria-valuemax="100"
+             aria-valuenow="${resultado.progresso.toFixed(1)}">
+          <div class="barra-preenchida"
+               style="width:${resultado.progresso}%"></div>
+        </div>
+
+        <div class="dados">
+          <div class="dado">
+            <span>Custo total</span>
+            <strong>${moeda(objetivo.custo)}</strong>
+          </div>
+
+          <div class="dado">
+            <span>Falta guardar</span>
+            <strong>${moeda(resultado.restante)}</strong>
+          </div>
+
+          <div class="dado">
+            <span>Seu ritmo</span>
+            <strong>${moeda(objetivo.mensal)}/mês</strong>
+          </div>
+
+          <div class="dado">
+            <span>Prazo desejado</span>
+            <strong>${objetivo.prazo} ${objetivo.prazo === 1 ? "mês" : "meses"}</strong>
+          </div>
+
+          <div class="dado">
+            <span>Tempo estimado</span>
+            <strong>${resultado.meses === null
+              ? "Não estimado: informe uma economia mensal"
+              : resultado.meses === 0
+                ? "Objetivo alcançado!"
+                : resultado.meses + (resultado.meses === 1 ? " mês" : " meses")}
+            </strong>
+          </div>
+        </div>
+
+        <div class="plano-b">${sugestao(objetivo, resultado)}</div>
+      </article>`;
+  }).join("");
+}
+
+function mostrarMensagem(texto, tipo) {
+  mensagem.textContent = texto;
+  mensagem.className = "aviso " + tipo;
+}
+
+function limparFormulario() {
+  formulario.reset();
+  document.getElementById("guardado").value = "0";
+  idEmEdicao = null;
+  botaoSalvar.textContent = "Salvar meu objetivo";
+  botaoCancelar.hidden = true;
+  tituloFormulario.textContent = "Vamos planejar seu próximo passo?";
+}
+
+function validarDados(dados) {
+  if (!dados.nome) {
+    return "Informe o nome do seu objetivo.";
+  }
+
+  if (!Number.isFinite(dados.custo) || dados.custo <= 0) {
+    return "O custo total deve ser maior que zero.";
+  }
+
+  if (!Number.isFinite(dados.guardado) || dados.guardado < 0) {
+    return "O valor guardado não pode ser negativo.";
+  }
+
+  if (dados.guardado > dados.custo) {
+    return "O valor guardado não pode ser maior que o custo total. Se você já ultrapassou a meta, atualize o custo do objetivo.";
+  }
+
+  if (!Number.isFinite(dados.mensal) || dados.mensal < 0) {
+    return "A economia mensal não pode ser negativa.";
+  }
+
+  if (!Number.isInteger(dados.prazo) ||
+      dados.prazo < 1 || dados.prazo > 1200) {
+    return "Informe um prazo entre 1 e 1200 meses.";
+  }
+
+  return "";
+}
+
+formulario.addEventListener("submit", function(evento) {
+  evento.preventDefault();
+
+  const dados = {
+    nome: document.getElementById("nome").value.trim(),
+    categoria: document.getElementById("categoria").value,
+    custo: Number(document.getElementById("custo").value),
+    guardado: Number(document.getElementById("guardado").value),
+    mensal: Number(document.getElementById("mensal").value),
+    prazo: Number(document.getElementById("prazo").value)
+  };
+
+  const erro = validarDados(dados);
+
+  if (erro) {
+    mostrarMensagem(erro, "erro");
+    return;
+  }
+
+  if (idEmEdicao !== null) {
+    const indice = objetivos.findIndex(function(item) {
+      return item.id === idEmEdicao;
+    });
+
+    if (indice !== -1) {
+      objetivos[indice] = {
+        ...dados,
+        id: idEmEdicao
+      };
+    }
+  } else {
+    objetivos.push({
+      ...dados,
+      id: Date.now().toString() + "-" + Math.random().toString(36).slice(2, 8)
+    });
+  }
+
+  const salvo = salvarNoNavegador();
+  renderizar();
+  limparFormulario();
+
+  if (salvo) {
+    mostrarMensagem("Objetivo salvo! Você já pode acompanhar seu planejamento abaixo.", "sucesso");
+  } else {
+    mostrarMensagem("O objetivo foi exibido, mas não foi possível salvá-lo neste navegador. Verifique as configurações de armazenamento.", "erro");
+  }
+
+  document.getElementById("meus-objetivos").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+lista.addEventListener("click", function(evento) {
+  const botao = evento.target.closest("button[data-acao]");
+
+  if (!botao) return;
+
+  const id = botao.dataset.id;
+  const acao = botao.dataset.acao;
+
+  const objetivo = objetivos.find(function(item) {
+    return item.id === id;
+  });
+
+  if (!objetivo) return;
+
+  if (acao === "editar") {
+    idEmEdicao = id;
+
+    document.getElementById("nome").value = objetivo.nome;
+    document.getElementById("categoria").value = objetivo.categoria;
+    document.getElementById("custo").value = objetivo.custo;
+    document.getElementById("guardado").value = objetivo.guardado;
+    document.getElementById("mensal").value = objetivo.mensal;
+    document.getElementById("prazo").value = objetivo.prazo;
+
+    botaoSalvar.textContent = "Salvar alterações";
+    botaoCancelar.hidden = false;
+    tituloFormulario.textContent = "Editar seu objetivo";
+    mensagem.className = "aviso";
+
+    document.getElementById("planejamento").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+    document.getElementById("nome").focus();
+  }
+
+  if (acao === "excluir") {
+    const confirmar = window.confirm(
+      'Deseja realmente excluir o objetivo "' + objetivo.nome + '"?'
+    );
+
+    if (!confirmar) return;
+
+    objetivos = objetivos.filter(function(item) {
+      return item.id !== id;
+    });
+
+    salvarNoNavegador();
+
+    if (idEmEdicao === id) {
+      limparFormulario();
+    }
+
+    renderizar();
+  }
+});
+
+botaoCancelar.addEventListener("click", function() {
+  limparFormulario();
+  mensagem.className = "aviso";
+  document.getElementById("planejamento").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+renderizar();
+</script>
+</body>
+</html>
